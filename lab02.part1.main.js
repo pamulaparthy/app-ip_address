@@ -104,9 +104,6 @@ function main() {
   let sampleCidrs = ['172.16.10.0/24', '172.16.10.0 255.255.255.0', '172.16.10.128/25', '192.168.1.216/30'];
   let sampleCidrsLen = sampleCidrs.length;
   // Create some test data for getIpv4MappedIpv6Address, both valid and invalid.
-  let sampleIpv4s_new = [ '172.16.10.1', '172.16.10.0/24', '172.16.10.0', '172.16.10.2'];
-
-  // Create some test data for getIpv4MappedIpv6Address, both valid and invalid.
   let sampleIpv4s = [ '172.16.10.1', '172.16.10.0/24', '172.16.10.0 255.255.255.0', '172.16.256.1', '1.1.1.-1'];
   let sampleIpv4sLen = sampleIpv4s.length;
 
@@ -118,11 +115,10 @@ function main() {
     getFirstIpAddress(sampleCidrs[i], (data, error) => {
       // Now we are inside the callback function.
       // Display the results on the console.
-      let ipv6_Address = getIpv4MappedIpv6Address(sampleIpv4s_new[i]);
       if (error) {
         console.error(`  Error returned from GET request: ${error}`);
       }
-      console.log(`  Response returned from GET request: {"ipv4":"${data}","ipv6":"${ipv6_Address}"}`);
+      console.log(`  Response returned from GET request: ${data}`);
     });
   }
   // Iterate over sampleIpv4s and pass the element's value to getIpv4MappedIpv6Address().
